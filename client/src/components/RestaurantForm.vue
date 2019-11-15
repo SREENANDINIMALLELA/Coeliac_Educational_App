@@ -17,7 +17,7 @@
       <label for="range">Price Range</label>
       <select class="price" name="range" v-model="range" >
         <option value="£">£</option>
-        <option value="£">££</option>
+        <option value="££">££</option>
         <option value="£££">£££</option>
       </select>
 
@@ -87,7 +87,7 @@ export default {
           {eventBus.$emit('restaurant-added',restaurant)})
       }
     )
-
+    e.target.reset();
     }
 
   }

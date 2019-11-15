@@ -7,9 +7,7 @@
     <p>Postcode: {{restaurant.postcode}}</p>
     <p>Phone Number: {{restaurant.phone}}</p>
 
-    <!-- <input type="submit" name="review" v-model= "review" v-on:click="submit" > -->
     <form v-on:submit="submit" id="review-form">
-      <!-- <input type="text" name="review" id ="review" > -->
       <textarea placeholder="Add Review" type="text" name="review"></textarea>
       <input class="submit" type="submit">
     </form>
@@ -22,9 +20,6 @@
       <star-rating   @rating-selected ="setRating" ></star-rating>
     </div>
     <br>
-
-    <!-- <button type="button" class="delete-btn" v-on:click="deleteRestaurant">Delete</button> -->
-
 
     <button class="ratings-button" type="button" name="button" v-on:click="seeRatingsHighchart" >see ratings </button>
     <restaurant-highcharts v-if="showChart" :restaurant="restaurant"></restaurant-highcharts>
@@ -66,7 +61,8 @@ export default {
         "reviews":[]
       }
       reviewsLocal.reviews = this.restaurant.reviews
-      RestaurantsService.UpdateRestaurant(this.restaurant._id , reviewsLocal)
+      RestaurantsService.UpdateRestaurant(this.restaurant._id , reviewsLocal);
+      event.target.reset()
     },
     setRating(rating)
     {
